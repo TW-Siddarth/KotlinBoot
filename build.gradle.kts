@@ -12,6 +12,9 @@ repositories {
 dependencies {
 	testImplementation(kotlin("test"))
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+	implementation("com.fasterxml.jackson.core:jackson-databind:2.20.1")
 }
 
 tasks.test {
