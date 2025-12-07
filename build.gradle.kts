@@ -15,6 +15,9 @@ dependencies {
 
 	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
 	implementation("com.fasterxml.jackson.core:jackson-databind:2.20.1")
+
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.module/jackson-module-kotlin
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.20.1")
 }
 
 tasks.test {
