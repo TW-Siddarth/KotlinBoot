@@ -1,4 +1,4 @@
-package module1java;
+package java_idioms;
 
 import java.util.Date;
 

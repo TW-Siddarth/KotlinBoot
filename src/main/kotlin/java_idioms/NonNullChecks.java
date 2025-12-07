@@ -1,4 +1,4 @@
-package module1java;
+package java_idioms;
 
 public class NonNullChecks {
 	// Example 1
