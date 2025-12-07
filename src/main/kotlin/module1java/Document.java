@@ -33,4 +33,44 @@ public class Document {
 		System.out.println(content);
 		System.out.println("---------------------------------");
 	}
+
+
+	// 1
+	public Document createReviewReadyDocument(String title, String content) {
+		Document doc = new Document();
+		doc.setTitle(title);
+		doc.setContent(content);
+		doc.setStatus(Status.REVIEW);
+		return doc;
+	}
+
+	// 2
+	public void saveAndPrintDocument(Document doc) {
+		if (doc != null) {
+			doc.save();
+			doc.print();
+		}
+	}
+
+	// 3
+	public String getDocumentSummary(Document doc) {
+		String summary = "Title: '" + doc.getTitle() + "', Status: " + doc.getStatus();
+		// Potentially more logic...
+		return summary.toUpperCase();
+	}
+
+	// 4
+	public Document logAndSave(Document doc) {
+		// Side effect
+		System.out.println("LOG: Document '" + doc.getTitle() + "' to be saved at " + doc.getLastModified());
+		doc.save(); // Primary action
+		return doc;
+	}
+
+	// 5
+	public void finalizeAndPrint(Document doc) {
+		doc.setStatus(Status.PUBLISHED);
+		doc.save();
+		doc.print();
+	}
 }
