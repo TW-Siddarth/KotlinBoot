@@ -1,5 +1,6 @@
 package java_idioms;
 
+@SuppressWarnings("ALL")
 public class NonNullChecks {
 	// Example 1
 
