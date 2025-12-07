@@ -2,6 +2,7 @@ package module1java;
 
 import java.util.Date;
 
+@SuppressWarnings("ALL")
 public class Document {
 	private String title;
 	private String content;
