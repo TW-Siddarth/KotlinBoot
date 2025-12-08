@@ -2,6 +2,7 @@ val ktorVersion: String by project
 
 plugins {
 	kotlin("jvm") version "2.1.20"
+	kotlin("plugin.serialization") version "2.1.20"
 }
 
 group = "com.thoughtworks.bootcamp2025"
@@ -29,6 +30,7 @@ dependencies {
 	implementation("io.ktor:ktor-client-core:${ktorVersion}")
 	implementation("io.ktor:ktor-client-cio:${ktorVersion}")
 	implementation("io.ktor:ktor-client-content-negotiation:${ktorVersion}")
+	implementation("io.ktor:ktor-server-content-negotiation:${ktorVersion}")
 
 	// https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
 	implementation("ch.qos.logback:logback-classic:1.5.21")

@@ -8,7 +8,7 @@ import io.ktor.server.sse.*
 import kotlinx.coroutines.flow.flow
 
 fun main() {
-	embeddedServer(Netty, port = 8080) {
+	embeddedServer(Netty, port = 18080) {
 		// 1. Install the SSE plugin
 		install(SSE)
 
