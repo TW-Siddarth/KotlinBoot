@@ -5,7 +5,13 @@ import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import io.ktor.server.routing.*
 import io.ktor.server.sse.*
+import io.ktor.sse.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.flow
+import java.util.*
+import kotlin.time.Duration.Companion.seconds
 
 fun main() {
 	embeddedServer(Netty, port = 18080) {
@@ -18,9 +24,10 @@ fun main() {
 				// This block runs within a ServerSSESession
 
 				// Create a Flow emitting each tick, with a 1s delay
-				val tickFlow = flow<String> {
-					repeat(10) {
-						TODO()
+				val tickFlow = flow {
+					repeat(10_000) {
+						delay(10)
+						emit("Tick #$it")
 					}
 				}
 
@@ -28,7 +35,16 @@ fun main() {
 				3. Collect the flow and emit events to the client, via a ServerSentEvent
 				with `data`, `event` and `id` fields populated.
 				*/
-				tickFlow.collect { TODO() }
+				tickFlow.conflate().collect {
+					delay(1.seconds)
+					send(
+						ServerSentEvent(
+							data = it,
+							event = "tick-event",
+							id = UUID.randomUUID().toString()
+						)
+					)
+				}
 
 				// The connection closes automatically when the block finishes.
 				// To keep it open indefinitely (e.g., for a chat), use `awaitCancellation()`

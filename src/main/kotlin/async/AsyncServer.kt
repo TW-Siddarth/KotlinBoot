@@ -44,7 +44,10 @@ fun main() {
 				try {
 					// Use coroutineScope to manage the lifecycle of the launched coroutines
 					coroutineScope {
-						TODO()
+						val user = async { client.get("http://localhost:18082/users/$userId").body<User>() }
+						val products = async { client.get("http://localhost:18082/products?userId=$userId").body<List<Product>>() }
+						val response = AggregatedResponse(user.await(), products.await())
+						call.respond(response)
 					}
 				}
 				catch (e: CancellationException) {

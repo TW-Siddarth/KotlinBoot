@@ -10,7 +10,7 @@ fun main() = runBlocking {
 		install(SSE) // Install SSE client plugin
 	}
 
-	client.sse(host = "localhost", port = 8080, path = "/events") {
+	client.sse(host = "localhost", port = 18080, path = "/events") {
 		// 'incoming' is a Flow<ServerSentEvent>
 		incoming.collect { event ->
 			println("Received event: ${event.event} -> ${event.data}")
